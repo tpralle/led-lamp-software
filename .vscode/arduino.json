@@ -1,4 +1,6 @@
 {
-  "configuration": "usbstack=arduino,debug=off",
-  "board": "Seeeduino:samd:seeed_XIAO_m0"
+    "configuration": "usbstack=arduino,debug=off",
+    "board": "Seeeduino:samd:seeed_XIAO_m0",
+    "programmer": "Seeeduino:adafruit_jlink",
+    "sketch": "led-lamp-software.ino"
 }
