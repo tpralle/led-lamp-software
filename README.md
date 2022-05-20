@@ -12,8 +12,12 @@ Open the led-lamp-software.ino file in an arduino ide, compile and upload to com
 
 ## Usage
 
-Cycles the color of the LEDs of the lamp in a rainbow pattern.
-Allows the use of a knob to control overall lamp brightness.
+Allows the use of a button to cycle different light modes.
+Allows the use of a knob to control overall LED brightness.
+
+Availible modes:
+
+Rainbow - Cycles the LEDs through verious colors in a rainbow pattern.
 
 ## Contributing
 
