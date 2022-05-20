@@ -27,11 +27,13 @@
 
 #define LED_PIN 6          // Set the data pin for LED control.
 #define KNOB_PIN A1        // Set the pin used for the potentiometer.
+#define MODE_PIN 7         // Set the pin used for mode change button.
 #define LED_TYPE WS2812B   // Set the type of led being used.
 #define COLOR_ORDER GRB    // Set color channel order.
 #define LED_COUNT 5        // Set the number of LEDs used in the lamp.
 #define MAX_BRIGHTNESS 200 // Set the max led brightness, be careful of power draw. Max: 255
 #define MIN_BRIGHTNESS 20  // Set the minimum led brightness. Min: 0
+#define MAX_MODES 1        // Set number of modes availible.
 
 // I am adventurous. I overcome fears by following my dreams.
 
@@ -39,8 +41,10 @@ CRGB leds[LED_COUNT];
 
 // I choose to see the light that I am to this world.
 
+int modeSwitch;
 uint8_t hue = 0;
 uint8_t outputBrightness;
+int currentMode = 1;
 
 void setup()
 {
@@ -55,11 +59,30 @@ void setup()
 
 void loop()
 {
+  modeSwitch = digitalRead(MODE_PIN);
   updateBrightness();
 
-  for (int x = 0; x < LED_COUNT; x++)
+  if (modeSwitch == HIGH) // Might need to add debounce. Open an issue on github if needed.
   {
-    leds[x].setHSV(hue, 255, 255);
+    currentMode++;
+
+    if (currentMode > MAX_MODES)
+    {
+      currentMode = 1;
+    }
+  }
+
+  swtich(currentMode)
+  {
+  case 1: // Rainbow Mode - Fades all LEDs through the same colors at the same time.
+    for (int x = 0; x < LED_COUNT; x++)
+    {
+      leds[x].setHSV(hue, 255, 255);
+    }
+    break;
+  default: // If we somehow make it past our modes, default back to mode 1. Probably not needed, or can take the place of case 1 once more modes have been added, starting the swithc at case 2.
+    currentMode = 1;
+    break;
   }
 
   EVERY_N_MILLISECONDS(15)
