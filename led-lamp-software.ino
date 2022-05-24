@@ -72,7 +72,7 @@ void loop()
     }
   }
 
-  swtich(currentMode)
+  switch (currentMode)
   {
   case 1: // Rainbow Mode - Fades all LEDs through the same colors at the same time.
     for (int x = 0; x < LED_COUNT; x++)
