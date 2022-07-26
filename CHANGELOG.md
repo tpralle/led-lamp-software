@@ -5,7 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [0.3.0] - 2022-05-23
+## [0.4.0] - 2022-07-26
+
+### Added
+
+- Brightness control knob is now disabled by default and can be enabled by setting associated boolean.
+
+## [0.3.0] - 2022-07-25
 
 ### Changed
 

@@ -45,6 +45,7 @@ uint8_t modeSwitch;
 uint8_t currentMode = 1;
 uint8_t hue = 0;
 uint8_t outputBrightness;
+bool controlBrightness = false; // Turn on external brightness control pot.
 
 void setup()
 {
@@ -60,7 +61,15 @@ void setup()
 void loop()
 {
   modeSwitch = digitalRead(MODE_PIN);
-  updateBrightness();
+
+  if (controlBrightness) // Checks to see if there is a knob installed, and adjusts brightness to current setting.
+  {
+    updateBrightness();
+  }
+  else
+  {
+    FastLED.setBrightness(MAX_BRIGHTNESS);
+  }
 
   if (modeSwitch == HIGH) // Might need to add debounce. Open an issue on github if needed.
   {
