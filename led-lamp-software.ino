@@ -41,10 +41,10 @@ CRGB leds[LED_COUNT];
 
 // I choose to see the light that I am to this world.
 
-int modeSwitch;
+uint8_t modeSwitch;
+uint8_t currentMode = 1;
 uint8_t hue = 0;
 uint8_t outputBrightness;
-int currentMode = 1;
 
 void setup()
 {
@@ -75,10 +75,7 @@ void loop()
   switch (currentMode)
   {
   case 1: // Rainbow Mode - Fades all LEDs through the same colors at the same time.
-    for (int x = 0; x < LED_COUNT; x++)
-    {
-      leds[x].setHSV(hue, 255, 255);
-    }
+    modeRainbow();
     break;
   default: // If we somehow make it past our modes, default back to mode 1. Probably not needed, or can take the place of case 1 once more modes have been added, starting the swithc at case 2.
     currentMode = 1;
@@ -100,4 +97,12 @@ void updateBrightness()
 {                                                                                 // function for converting sensor value from ADC to 8bit value and consraining the result.
   int mappedBrightness = map(analogRead(KNOB_PIN), 0, 1023, 0, 255);              // Converts the knob input from 10bit to 8bit so the fastled library can use it.
   outputBrightness = constrain(mappedBrightness, MIN_BRIGHTNESS, MAX_BRIGHTNESS); // Gives us a variable to use that respects our min adn max brightness settings.
+}
+
+void modeRainbow()
+{
+  for (uint8_t x = 0; x < LED_COUNT; x++)
+  {
+    leds[x].setHSV(hue, 255, 255);
+  }
 }
