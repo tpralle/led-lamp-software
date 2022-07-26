@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.4.1] - 2022-07-26
+
+### Bugfix
+
+- Brightness knob check wasn't actually setting a value if no knob was present. Will default to MAX_BRIGHTNESS value.
+
 ## [0.4.0] - 2022-07-26
 
 ### Added
