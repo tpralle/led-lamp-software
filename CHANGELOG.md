@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.3.0] - 2022-05-23
+
+### Changed
+
+- Moved Rainbow Fade code to it's own function
+- Optimized memory usage - Used smallest variables where possible
+
 ## [0.2.1] - 2022-05-23
 
 ### Fixed
